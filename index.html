@@ -3,414 +3,156 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI, Language & Identity — Tom Liu | The Sociology Review</title>
+<title>AI, Language & Identity — Tom Liu</title>
 <style>
   :root {
-    --red: #bb1919;
-    --red-dark: #8a1010;
-    --black: #0a0a0a;
-    --ink: #1a1a1a;
-    --ink-mid: #333;
-    --ink-light: #555;
-    --rule: #ccc;
-    --rule-light: #e2e2e2;
-    --bg: #f7f5f0;
-    --bg-white: #ffffff;
-    --bg-warm: #f2efe9;
-    --gold: #8b6914;
-    --blue-ink: #1a3a6b;
+    --red: #bb1919; --black: #0a0a0a; --ink: #1a1a1a; --ink-mid: #333;
+    --ink-light: #555; --rule: #ccc; --rule-light: #e2e2e2;
+    --bg: #f7f5f0; --bg-white: #fff; --gold: #8b6914; --blue-ink: #1a3a6b;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: Georgia, 'Times New Roman', serif;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { background: var(--bg); color: var(--ink); font-family: Georgia,'Times New Roman',serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
   ::selection { background: #bb191922; }
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: #bbb; }
+  ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: #bbb; }
 
-  /* ── MASTHEAD ── */
-  .masthead {
-    background: var(--black);
-    padding: 0 40px;
-    border-bottom: 4px solid var(--red);
-  }
-  .masthead-inner {
-    max-width: 1080px; margin: 0 auto;
-    display: flex; align-items: stretch;
-    justify-content: space-between;
-    min-height: 64px;
-  }
-  .masthead-brand {
-    display: flex; align-items: center; gap: 0;
-    text-decoration: none;
-  }
-  .masthead-logo {
-    background: var(--red);
-    color: #fff;
-    font-family: Georgia, serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .04em;
-    padding: 0 14px;
-    display: flex; align-items: center;
-    height: 100%;
-    text-transform: uppercase;
-  }
-  .masthead-title {
-    color: #fff;
-    font-family: Georgia, serif;
-    font-size: 13px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: 0 20px;
-    display: flex; align-items: center;
-  }
-  .masthead-nav {
-    display: flex; align-items: center; gap: 0;
-  }
-  .masthead-nav a {
-    color: #ccc;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    padding: 0 16px;
-    height: 100%;
-    display: flex; align-items: center;
-    border-left: 1px solid #222;
-    transition: background .15s, color .15s;
-  }
+  /* MASTHEAD */
+  .masthead { background: var(--black); padding: 0 40px; border-bottom: 4px solid var(--red); }
+  .masthead-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: stretch; justify-content: space-between; min-height: 60px; }
+  .masthead-left { display: flex; align-items: stretch; }
+  .masthead-logo { background: var(--red); color: #fff; font-family: Georgia,serif; font-size: 13px; font-weight: 700; letter-spacing: .04em; padding: 0 14px; display: flex; align-items: center; text-transform: uppercase; }
+  .masthead-title { color: #fff; font-family: Georgia,serif; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 0 20px; display: flex; align-items: center; }
+  .masthead-nav { display: flex; align-items: center; }
+  .masthead-nav a { color: #ccc; text-decoration: none; font-family: Arial,sans-serif; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; padding: 0 14px; height: 100%; display: flex; align-items: center; border-left: 1px solid #222; transition: background .15s, color .15s; }
   .masthead-nav a:hover { background: #1a1a1a; color: #fff; }
 
-  /* ── DATE BAR ── */
-  .datebar {
-    background: var(--bg-white);
-    border-bottom: 1px solid var(--rule);
-    padding: 6px 40px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    color: var(--ink-light);
-    letter-spacing: .03em;
-  }
+  /* LANGUAGE BAR */
+  .lang-bar { background: #111; padding: 7px 40px; border-bottom: 1px solid #222; display: flex; align-items: center; gap: 0; }
+  .lang-bar-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; gap: 8px; }
+  .lang-label { font-family: Arial,sans-serif; font-size: 10px; letter-spacing: .12em; color: #555; text-transform: uppercase; margin-right: 8px; }
+  .lang-btn { background: none; border: 1px solid #333; color: #777; font-family: Arial,sans-serif; font-size: 11px; letter-spacing: .06em; padding: 4px 12px; cursor: pointer; transition: all .15s; text-transform: uppercase; border-radius: 2px; }
+  .lang-btn:hover { border-color: #555; color: #aaa; }
+  .lang-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+  /* DATE BAR */
+  .datebar { background: var(--bg-white); border-bottom: 1px solid var(--rule); padding: 6px 40px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; color: var(--ink-light); }
   .datebar-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; }
 
-  /* ── HERO / FRONT PAGE ── */
-  .front-page {
-    background: var(--bg-white);
-    border-bottom: 3px double var(--rule);
-    padding: 40px 40px 0;
-  }
+  /* FRONT PAGE */
+  .front-page { background: var(--bg-white); border-bottom: 3px double var(--rule); padding: 40px 40px 0; }
   .front-inner { max-width: 1080px; margin: 0 auto; }
-
-  /* Headline band */
-  .headline-band {
-    border-bottom: 3px solid var(--black);
-    padding-bottom: 24px;
-    margin-bottom: 28px;
-  }
-  .section-tag {
-    display: inline-block;
-    background: var(--red);
-    color: #fff;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    margin-bottom: 14px;
-  }
+  .headline-band { border-bottom: 3px solid var(--black); padding-bottom: 24px; margin-bottom: 28px; }
+  .section-tag { display: inline-block; background: var(--red); color: #fff; font-family: Arial,sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; margin-bottom: 14px; }
   .section-tag.gold { background: var(--gold); }
   .section-tag.blue { background: var(--blue-ink); }
-  .section-tag.outline {
-    background: transparent;
-    color: var(--ink-mid);
-    border: 1px solid var(--rule);
-  }
-
-  .main-headline {
-    font-size: clamp(32px, 5vw, 58px);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -.02em;
-    color: var(--black);
-    margin-bottom: 18px;
-  }
-  .main-deck {
-    font-size: 18px;
-    color: var(--ink-mid);
-    line-height: 1.55;
-    max-width: 680px;
-    margin-bottom: 20px;
-    font-style: italic;
-    border-left: 3px solid var(--red);
-    padding-left: 16px;
-  }
-  .byline-row {
-    display: flex; align-items: center; gap: 20px;
-    font-family: Arial, sans-serif; font-size: 12px; color: var(--ink-light);
-    padding-top: 16px;
-    border-top: 1px solid var(--rule-light);
-  }
+  .main-headline { font-size: clamp(30px, 5vw, 56px); font-weight: 700; line-height: 1.08; letter-spacing: -.02em; color: var(--black); margin-bottom: 18px; }
+  .main-deck { font-size: 17px; color: var(--ink-mid); line-height: 1.6; max-width: 680px; margin-bottom: 20px; font-style: italic; border-left: 3px solid var(--red); padding-left: 16px; }
+  .byline-row { display: flex; align-items: center; gap: 16px; font-family: Arial,sans-serif; font-size: 12px; color: var(--ink-light); padding-top: 16px; border-top: 1px solid var(--rule-light); flex-wrap: wrap; }
   .byline-name { color: var(--ink); font-weight: 600; }
   .byline-sep { color: var(--rule); }
-
-  /* Front layout grid */
-  .front-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 0;
-    border-top: 1px solid var(--rule);
-    margin-top: 28px;
-  }
-  .front-main {
-    padding: 28px 32px 32px 0;
-    border-right: 1px solid var(--rule);
-  }
-  .front-sidebar {
-    padding: 28px 0 28px 28px;
-  }
-
-  /* Pull quote on front page */
-  .pull-quote-front {
-    font-size: 22px;
-    font-style: italic;
-    color: var(--ink-mid);
-    line-height: 1.45;
-    border-top: 3px solid var(--black);
-    border-bottom: 1px solid var(--rule);
-    padding: 18px 0;
-    margin-bottom: 20px;
-  }
-  .pull-quote-front::before { content: '\201C'; }
-  .pull-quote-front::after  { content: '\201D'; }
-
-  /* Sidebar stories */
-  .sidebar-story {
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--rule-light);
-  }
-  .sidebar-story:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .sidebar-story h4 {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--black);
-    margin-bottom: 5px;
-    cursor: pointer;
-  }
+  .front-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 0; border-top: 1px solid var(--rule); margin-top: 28px; }
+  .front-main { padding: 28px 32px 32px 0; border-right: 1px solid var(--rule); }
+  .front-main p { font-size: 15px; line-height: 1.85; color: var(--ink-mid); margin-bottom: 16px; }
+  .front-main p:first-child { font-size: 16px; }
+  .front-sidebar { padding: 28px 0 28px 28px; }
+  .pull-quote-front { font-size: 21px; font-style: italic; color: var(--ink-mid); line-height: 1.45; border-top: 3px solid var(--black); border-bottom: 1px solid var(--rule); padding: 16px 0; margin-bottom: 20px; }
+  .pull-quote-front::before { content:'\201C'; } .pull-quote-front::after { content:'\201D'; }
+  .sidebar-story { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--rule-light); }
+  .sidebar-story:last-child { border: none; margin: 0; padding: 0; }
+  .sidebar-story h4 { font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--black); margin-bottom: 5px; cursor: pointer; }
   .sidebar-story h4:hover { color: var(--red); }
   .sidebar-story p { font-size: 13px; color: var(--ink-light); line-height: 1.5; }
 
-  /* ── CONTENT WRAPPER ── */
+  /* CONTENT */
   .content-wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+  .section-header { border-top: 4px solid var(--black); border-bottom: 1px solid var(--rule); padding: 10px 0; margin: 44px 0 28px; display: flex; align-items: baseline; gap: 16px; }
+  .section-header h2 { font-size: 20px; font-weight: 700; color: var(--black); text-transform: uppercase; }
+  .section-header .sub { font-family: Arial,sans-serif; font-size: 12px; color: var(--ink-light); font-style: italic; }
 
-  /* ── SECTION HEADERS ── */
-  .section-header {
-    border-top: 4px solid var(--black);
-    border-bottom: 1px solid var(--rule);
-    padding: 10px 0;
-    margin: 44px 0 28px;
-    display: flex; align-items: baseline; gap: 16px;
-  }
-  .section-header h2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--black);
-    letter-spacing: -.01em;
-    text-transform: uppercase;
-  }
-  .section-header .sub { font-family: Arial, sans-serif; font-size: 12px; color: var(--ink-light); font-style: italic; }
-
-  /* ── INTERVIEW ── */
-  .interview-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
-  .interview-col-label {
-    position: sticky; top: 80px;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    color: var(--ink-light);
-    line-height: 1.6;
-    border-top: 3px solid var(--red);
-    padding-top: 12px;
-  }
-  .interview-col-label h3 { font-size: 16px; font-family: Georgia, serif; color: var(--black); font-weight: 700; margin-bottom: 8px; }
-
+  /* INTERVIEW */
+  .interview-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+  .interview-col-label { position: sticky; top: 80px; font-family: Arial,sans-serif; font-size: 12px; color: var(--ink-light); line-height: 1.6; border-top: 3px solid var(--red); padding-top: 12px; }
+  .interview-col-label h3 { font-size: 16px; font-family: Georgia,serif; color: var(--black); font-weight: 700; margin-bottom: 8px; }
   .q-list { display: flex; flex-direction: column; gap: 2px; }
-  .q-item {
-    background: var(--bg-white);
-    border: 1px solid var(--rule-light);
-    border-left: 3px solid transparent;
-    transition: border-left-color .15s;
-    cursor: pointer;
-  }
+  .q-item { background: var(--bg-white); border: 1px solid var(--rule-light); border-left: 3px solid transparent; transition: border-left-color .15s; cursor: pointer; }
   .q-item:hover { border-left-color: var(--rule); }
   .q-item.open { border-left-color: var(--red); }
-
-  .q-header-row {
-    padding: 16px 20px;
-    display: flex; align-items: flex-start; gap: 14px;
-    user-select: none;
-  }
-  .q-num {
-    font-family: Arial, sans-serif; font-size: 10px; font-weight: 700;
-    color: var(--red); letter-spacing: .06em;
-    padding-top: 3px; min-width: 24px;
-  }
-  .q-question {
-    flex: 1; font-size: 15px; font-weight: 700; color: var(--ink);
-    line-height: 1.4; font-family: Georgia, serif;
-  }
-  .q-toggle-icon {
-    font-size: 18px; color: var(--rule); font-family: Arial, sans-serif;
-    transition: transform .25s; flex-shrink: 0; padding-top: 1px;
-  }
+  .q-header-row { padding: 16px 20px; display: flex; align-items: flex-start; gap: 14px; user-select: none; }
+  .q-num { font-family: Arial,sans-serif; font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: .06em; padding-top: 3px; min-width: 24px; }
+  .q-question { flex: 1; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4; font-family: Georgia,serif; }
+  .q-toggle-icon { font-size: 18px; color: var(--rule); transition: transform .25s; flex-shrink: 0; padding-top: 1px; }
   .q-item.open .q-toggle-icon { transform: rotate(45deg); color: var(--red); }
-
   .q-body { display: none; }
   .q-item.open .q-body { display: block; }
-  .q-answer-text {
-    padding: 0 20px 20px 58px;
-    font-size: 15px; line-height: 1.85; color: var(--ink-mid);
-    border-top: 1px solid var(--rule-light);
-    padding-top: 16px;
-  }
+  .q-answer-text { padding: 16px 20px 20px 58px; font-size: 15px; line-height: 1.85; color: var(--ink-mid); border-top: 1px solid var(--rule-light); }
   .q-tags-row { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .q-tag {
-    font-family: Arial, sans-serif; font-size: 10px; letter-spacing: .08em;
-    color: var(--ink-light); border: 1px solid var(--rule);
-    padding: 2px 7px; text-transform: uppercase;
-  }
+  .q-tag { font-family: Arial,sans-serif; font-size: 10px; letter-spacing: .08em; color: var(--ink-light); border: 1px solid var(--rule); padding: 2px 7px; text-transform: uppercase; }
 
-  /* ── THEORY TOOLTIP ── */
+  /* TOOLTIP */
   .tt { position: relative; display: inline; cursor: pointer; }
   .tt.gold { color: var(--gold); border-bottom: 1px solid rgba(139,105,20,.4); }
   .tt.blue  { color: var(--blue-ink); border-bottom: 1px solid rgba(26,58,107,.4); }
-  .tt-bubble {
-    display: none; position: absolute;
-    bottom: calc(100% + 8px); left: 0;
-    width: 280px; background: var(--black); color: #e8e8e8;
-    border-top: 3px solid var(--red);
-    padding: 14px 16px; z-index: 500;
-    font-family: Arial, sans-serif; font-size: 12px; line-height: 1.6;
-    box-shadow: 0 6px 24px rgba(0,0,0,.25);
-    animation: bubbleIn .12s ease;
-  }
+  .tt-bubble { display: none; position: absolute; bottom: calc(100% + 8px); left: 0; width: 280px; background: var(--black); color: #e8e8e8; border-top: 3px solid var(--red); padding: 14px 16px; z-index: 500; font-family: Arial,sans-serif; font-size: 12px; line-height: 1.6; box-shadow: 0 6px 24px rgba(0,0,0,.25); animation: bubbleIn .12s ease; pointer-events: none; }
   @keyframes bubbleIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
   .tt:hover .tt-bubble { display: block; }
-  .tt-bubble-term { font-weight: 700; color: #fff; margin-bottom: 6px; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
-  .tt-bubble-def { color: #ccc; }
-  .tt-bubble-src { display: block; margin-top: 8px; color: #666; font-size: 10px; font-style: italic; }
+  .tt-bubble b { display: block; color: #fff; margin-bottom: 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+  .tt-bubble em { display: block; margin-top: 8px; color: #555; font-size: 10px; }
 
-  /* ── THEORY / PHILOSOPHY COLUMNS ── */
+  /* THEORY */
   .theory-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   .theory-col { border-top: 4px solid var(--black); padding-top: 16px; }
   .theory-col.gold-col { border-top-color: var(--gold); }
   .theory-col.blue-col { border-top-color: var(--blue-ink); }
-
-  .theory-author {
-    font-size: 20px; font-weight: 700; color: var(--black);
-    margin-bottom: 4px; letter-spacing: -.01em;
-  }
-  .theory-subtitle { font-family: Arial, sans-serif; font-size: 12px; color: var(--ink-light); margin-bottom: 18px; }
-
+  .theory-author { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+  .theory-subtitle { font-family: Arial,sans-serif; font-size: 12px; color: var(--ink-light); margin-bottom: 18px; }
   .concept-entry { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--rule-light); }
   .concept-entry:last-of-type { border-bottom: none; }
-  .concept-term {
-    font-size: 13px; font-weight: 700; color: var(--black);
-    text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px;
-    font-family: Arial, sans-serif;
-  }
+  .concept-term { font-size: 12px; font-weight: 700; color: var(--black); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; font-family: Arial,sans-serif; }
   .concept-def { font-size: 14px; color: var(--ink-mid); line-height: 1.75; }
-  .concept-src { font-family: Arial, sans-serif; font-size: 11px; color: #999; margin-top: 5px; font-style: italic; }
+  .concept-src { font-family: Arial,sans-serif; font-size: 11px; color: #999; margin-top: 5px; font-style: italic; }
+  .bq-pull { margin: 24px 0; padding: 18px 22px; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); text-align: center; }
+  .bq-pull p { font-size: 17px; font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 10px; }
+  .bq-pull cite { font-family: Arial,sans-serif; font-size: 11px; color: var(--ink-light); font-style: normal; text-transform: uppercase; letter-spacing: .06em; }
 
-  /* ── BLOCKQUOTE (newspaper pull style) ── */
-  .bq-pull {
-    margin: 28px 0;
-    padding: 20px 24px;
-    border-top: 3px solid var(--black);
-    border-bottom: 3px solid var(--black);
-    text-align: center;
-  }
-  .bq-pull p { font-size: 19px; font-style: italic; color: var(--ink); line-height: 1.5; margin-bottom: 10px; }
-  .bq-pull cite { font-family: Arial, sans-serif; font-size: 11px; color: var(--ink-light); font-style: normal; text-transform: uppercase; letter-spacing: .06em; }
+  /* INSIGHTS */
+  .insight-masthead { background: var(--black); color: #fff; padding: 10px 0; text-align: center; margin-bottom: 0; font-family: Georgia,serif; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); background: var(--rule-light); }
+  .i-card { background: var(--bg-white); padding: 22px 20px; border: 1px solid var(--rule-light); }
+  .i-quote { font-size: 15px; font-style: italic; color: var(--ink); line-height: 1.6; margin-bottom: 10px; }
+  .i-quote::before { content:'\201C'; color: var(--red); font-size: 18px; font-style: normal; }
+  .i-quote::after  { content:'\201D'; color: var(--red); font-size: 18px; font-style: normal; }
+  .i-ctx { font-family: Arial,sans-serif; font-size: 10px; color: var(--ink-light); text-transform: uppercase; letter-spacing: .06em; }
 
-  /* ── INSIGHT GRID (newspaper layout) ── */
-  .insight-masthead {
-    background: var(--black); color: #fff;
-    padding: 10px 0; text-align: center; margin-bottom: 24px;
-    font-family: Georgia, serif; font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
-  }
-  .insight-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--rule);
-    background: var(--rule-light);
-  }
-  .i-card {
-    background: var(--bg-white);
-    padding: 22px 20px;
-    border: 1px solid var(--rule-light);
-  }
-  .i-quote { font-size: 16px; font-style: italic; color: var(--ink); line-height: 1.6; margin-bottom: 10px; }
-  .i-quote::before { content: '\201C'; color: var(--red); font-size: 20px; font-style: normal; }
-  .i-quote::after  { content: '\201D'; color: var(--red); font-size: 20px; font-style: normal; }
-  .i-ctx { font-family: Arial, sans-serif; font-size: 10px; color: var(--ink-light); text-transform: uppercase; letter-spacing: .06em; }
-
-  /* ── CONCLUSION ── */
+  /* CONCLUSION */
   .conclusion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-  .conclusion-lead {
-    font-size: 20px; font-weight: 700; color: var(--black); line-height: 1.35;
-    border-top: 3px solid var(--red); padding-top: 14px; margin-bottom: 18px;
-  }
+  .conclusion-lead { font-size: 19px; font-weight: 700; color: var(--black); line-height: 1.35; border-top: 3px solid var(--red); padding-top: 14px; margin-bottom: 18px; }
   .conclusion-body { font-size: 15px; color: var(--ink-mid); line-height: 1.85; margin-bottom: 18px; }
-  .conclusion-kicker {
-    background: var(--black); color: #fff;
-    padding: 20px 24px; margin-top: 28px;
-    font-style: italic; font-size: 15px; line-height: 1.7;
-    border-left: 4px solid var(--red);
-  }
+  .conclusion-kicker { background: var(--black); color: #fff; padding: 20px 24px; margin-top: 28px; font-style: italic; font-size: 15px; line-height: 1.7; border-left: 4px solid var(--red); }
 
-  /* ── FOOTER ── */
-  .site-footer {
-    background: var(--black);
-    border-top: 4px solid var(--red);
-    padding: 28px 40px;
-    margin-top: 56px;
-  }
+  /* FOOTER */
+  .site-footer { background: var(--black); border-top: 4px solid var(--red); padding: 28px 40px; margin-top: 56px; }
   .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-  .footer-brand { color: #fff; font-family: Georgia, serif; font-size: 14px; letter-spacing: .04em; }
-  .footer-meta { font-family: Arial, sans-serif; font-size: 11px; color: #666; letter-spacing: .04em; }
+  .footer-brand { color: #fff; font-family: Georgia,serif; font-size: 14px; }
+  .footer-meta { font-family: Arial,sans-serif; font-size: 11px; color: #666; }
 
-  /* ── UTILITIES ── */
-  hr.section-rule { border: none; border-top: 1px solid var(--rule); margin: 36px 0; }
-
-  /* ── REVEAL ── */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.vis { opacity: 1; transform: translateY(0); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 760px) {
-    .masthead { padding: 0 16px; }
+    .masthead { padding: 0 16px; } .masthead-nav { display: none; }
+    .lang-bar { padding: 7px 16px; }
     .datebar { padding: 6px 16px; }
     .front-page { padding: 24px 16px 0; }
     .front-grid { grid-template-columns: 1fr; }
     .front-sidebar { border-top: 2px solid var(--rule); padding: 20px 0 0; }
     .content-wrap { padding: 0 16px; }
     .interview-wrap { grid-template-columns: 1fr; }
-    .interview-col-label { position: static; border-top: 3px solid var(--red); margin-bottom: 20px; }
+    .interview-col-label { position: static; }
     .theory-cols { grid-template-columns: 1fr; }
     .insight-grid { grid-template-columns: 1fr; }
     .conclusion-grid { grid-template-columns: 1fr; }
-    .masthead-nav { display: none; }
+    .tt-bubble { width: 220px; }
   }
 </style>
 </head>
@@ -419,341 +161,502 @@
 <!-- MASTHEAD -->
 <header class="masthead">
   <div class="masthead-inner">
-    <div class="masthead-brand">
+    <div class="masthead-left">
       <div class="masthead-logo">TSR</div>
-      <div class="masthead-title">The Sociology Review</div>
+      <div class="masthead-title" data-i18n="masthead_title">The Sociology Review</div>
     </div>
     <nav class="masthead-nav">
-      <a href="#interview">Interview</a>
-      <a href="#theory">Theory</a>
-      <a href="#philosophy">Philosophy</a>
-      <a href="#insights">Insights</a>
+      <a href="#interview" data-i18n="nav_interview">Interview</a>
+      <a href="#theory" data-i18n="nav_theory">Theory</a>
+      <a href="#philosophy" data-i18n="nav_philosophy">Philosophy</a>
+      <a href="#insights" data-i18n="nav_insights">Insights</a>
     </nav>
   </div>
 </header>
 
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <div class="lang-bar-inner">
+    <span class="lang-label" data-i18n="lang_label">Language</span>
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</div>
+
 <!-- DATE BAR -->
 <div class="datebar">
   <div class="datebar-inner">
-    <span>Technology &amp; Identity · Special Report</span>
-    <span>UCLA Department of Sociology · 2025</span>
+    <span data-i18n="datebar_section">Technology &amp; Identity · Special Report</span>
+    <span data-i18n="datebar_dept">UCLA Department of Sociology · 2025</span>
   </div>
 </div>
 
 <!-- FRONT PAGE -->
 <div class="front-page">
   <div class="front-inner">
-
-    <!-- Main headline -->
     <div class="headline-band">
-      <div class="section-tag">Special Report</div>
-      <h1 class="main-headline">AI, Language &amp; Identity:<br>Who Are We Becoming?</h1>
-      <p class="main-deck">A UCLA sociology student argues that AI writing tools don't just help non-native speakers communicate — they quietly reshape the voice behind the words, pushing users toward an invisible standard nobody chose.</p>
+      <div class="section-tag" data-i18n="tag_special">Special Report</div>
+      <h1 class="main-headline" data-i18n="main_headline">AI, Language &amp; Identity:<br>Who Are We Becoming?</h1>
+      <p class="main-deck" data-i18n="main_deck">A UCLA sociology student argues that AI writing tools don't just help non-native speakers communicate — they quietly reshape the voice behind the words, pushing users toward an invisible standard nobody chose.</p>
       <div class="byline-row">
-        <span>Interview with <span class="byline-name">Tom Liu</span>, Undergraduate, Sociology, UCLA</span>
+        <span data-i18n="byline_interview">Interview with <span class="byline-name">Tom Liu</span>, Undergraduate, Sociology, UCLA</span>
         <span class="byline-sep">|</span>
-        <span>Theory: W.E.B. Du Bois &amp; John Stuart Mill</span>
+        <span data-i18n="byline_theory">Theory: W.E.B. Du Bois &amp; John Stuart Mill</span>
         <span class="byline-sep">|</span>
-        <span>Reading time: 8 min</span>
+        <span data-i18n="byline_time">Reading time: 8 min</span>
       </div>
     </div>
 
-    <!-- Front grid: main + sidebar -->
     <div class="front-grid">
       <div class="front-main">
-        <p style="font-size:16px;line-height:1.85;color:var(--ink-mid);margin-bottom:18px;">
-          <strong style="color:var(--black);">WHEN TOM LIU</strong> runs his academic essays through an AI writing tool, something happens that he can't quite name. The sentences get cleaner. The argument lands more sharply. But reading it back, he wonders: is this still mine?
-        </p>
-        <p style="font-size:15px;line-height:1.85;color:var(--ink-mid);margin-bottom:18px;">
-          Liu, a sociology student at UCLA born in Chengdu, China, has spent the past year thinking carefully about what AI does to language — not just to grammar and clarity, but to identity. His answer draws on W.E.B. Du Bois and John Stuart Mill to make a case that is as much philosophical as personal.
-        </p>
-        <p style="font-size:15px;line-height:1.85;color:var(--ink-mid);">
-          "It sounds better," he says. "But it doesn't sound like me." The interview below explores what that gap means — and why it might matter more than any of us realize.
-        </p>
+        <p data-i18n="front_p1"><strong style="color:var(--black);">WHEN TOM LIU</strong> runs his academic essays through an AI writing tool, something happens that he can't quite name. The sentences get cleaner. The argument lands more sharply. But reading it back, he wonders: is this still mine?</p>
+        <p data-i18n="front_p2">Liu, a sociology student at UCLA born in Chengdu, China, has spent the past year thinking carefully about what AI does to language — not just to grammar and clarity, but to identity. His answer draws on W.E.B. Du Bois and John Stuart Mill to make a case that is as much philosophical as personal.</p>
+        <p data-i18n="front_p3">"It sounds better," he says. "But it doesn't sound like me." The interview below explores what that gap means — and why it might matter more than any of us realize.</p>
       </div>
-
       <div class="front-sidebar">
-        <div class="pull-quote-front">It sounds better, but not like me.</div>
-
+        <div class="pull-quote-front" data-i18n="pull_quote_front">It sounds better, but not like me.</div>
         <div class="sidebar-story">
-          <h4 onclick="document.getElementById('interview').scrollIntoView({behavior:'smooth'})">The full interview: six questions on AI, voice, and conformity</h4>
-          <p>Tom Liu speaks in depth about pressure, authenticity, and what gets lost in the rewrite.</p>
+          <h4 onclick="document.getElementById('interview').scrollIntoView({behavior:'smooth'})" data-i18n="sidebar1_h">The full interview: six questions on AI, voice, and conformity</h4>
+          <p data-i18n="sidebar1_p">Tom Liu speaks in depth about pressure, authenticity, and what gets lost in the rewrite.</p>
         </div>
         <div class="sidebar-story">
-          <h4 onclick="document.getElementById('theory').scrollIntoView({behavior:'smooth'})">Du Bois in the digital age: double consciousness and AI</h4>
-          <p>How a 1903 concept maps onto the experience of non-native speakers using AI tools today.</p>
+          <h4 onclick="document.getElementById('theory').scrollIntoView({behavior:'smooth'})" data-i18n="sidebar2_h">Du Bois in the digital age: double consciousness and AI</h4>
+          <p data-i18n="sidebar2_p">How a 1903 concept maps onto the experience of non-native speakers using AI tools today.</p>
         </div>
         <div class="sidebar-story">
-          <h4 onclick="document.getElementById('philosophy').scrollIntoView({behavior:'smooth'})">Mill's warning: social tyranny has a new interface</h4>
-          <p>The philosopher who feared conformity more than law could not have imagined the algorithm.</p>
+          <h4 onclick="document.getElementById('philosophy').scrollIntoView({behavior:'smooth'})" data-i18n="sidebar3_h">Mill's warning: social tyranny has a new interface</h4>
+          <p data-i18n="sidebar3_p">The philosopher who feared conformity more than law could not have imagined the algorithm.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── INTERVIEW ── -->
+<!-- INTERVIEW -->
 <div class="content-wrap" style="padding-top:0;">
-
   <div class="section-header" id="interview">
-    <h2>The Interview</h2>
-    <span class="sub">Click to expand each question. Hover <span class="tt gold" style="cursor:default;">highlighted terms<span class="tt-bubble"><span class="tt-bubble-term">Theory Annotation</span><span class="tt-bubble-def">Gold = Du Bois · Blue = Mill. Hover any highlighted term to see its theoretical definition.</span></span></span> for definitions.</span>
+    <h2 data-i18n="nav_interview">Interview</h2>
+    <span class="sub" data-i18n="interview_hint">Click to expand · Hover <span style="color:var(--gold);border-bottom:1px solid rgba(139,105,20,.4)">gold</span> / <span style="color:var(--blue-ink);border-bottom:1px solid rgba(26,58,107,.4)">blue</span> terms for definitions</span>
   </div>
 
   <div class="interview-wrap reveal">
-    <!-- Left label -->
     <div class="interview-col-label">
-      <div class="section-tag" style="margin-bottom:12px;">Subject</div>
+      <div class="section-tag" style="margin-bottom:12px;" data-i18n="label_subject">Subject</div>
       <h3>Tom Liu</h3>
-      <p style="margin-bottom:10px;">Undergraduate, Sociology<br>University of California, Los Angeles</p>
-      <p style="margin-bottom:10px;">Born: Chengdu, China</p>
-      <p>Research interests: media, technology, identity formation, language and power.</p>
+      <p style="margin-bottom:10px;" data-i18n="profile_role">Undergraduate, Sociology<br>University of California, Los Angeles</p>
+      <p style="margin-bottom:10px;" data-i18n="profile_born">Born: Chengdu, China</p>
+      <p data-i18n="profile_research">Research: media, technology, identity formation, language and power.</p>
       <hr style="border:none;border-top:1px solid var(--rule-light);margin:16px 0;">
-      <p style="font-size:10px;letter-spacing:.03em;color:#aaa;">Theory references in this interview: W.E.B. Du Bois (<em>The Souls of Black Folk</em>, 1903) and John Stuart Mill (<em>On Liberty</em>, 1859).</p>
+      <p style="font-size:10px;color:#aaa;" data-i18n="profile_theory_note">Theory: W.E.B. Du Bois (The Souls of Black Folk, 1903) and John Stuart Mill (On Liberty, 1859).</p>
     </div>
 
-    <!-- Q&A -->
-    <div class="q-list">
+    <div class="q-list" id="q-list"><!-- filled by JS --></div>
+  </div>
 
-      <div class="q-item" onclick="toggle(this)">
-        <div class="q-header-row">
-          <span class="q-num">Q1</span>
-          <span class="q-question">Does AI change how you express yourself?</span>
-          <span class="q-toggle-icon">+</span>
-        </div>
-        <div class="q-body">
-          <div class="q-answer-text">
-            Yeah, honestly it does. When I write something and then run it through ChatGPT to 'clean it up,' it sounds more polished — but it doesn't quite sound like me anymore. There's this strange tension: I want to be understood clearly, but I also want people to know it's actually me speaking. It reminds me of Du Bois'
-            <span class="tt gold">double consciousness<span class="tt-bubble"><span class="tt-bubble-term">Double Consciousness</span><span class="tt-bubble-def">The sense of always looking at oneself through the eyes of others — a psychological tension between one's identity and the identity imposed by society.</span><span class="tt-bubble-src">— W.E.B. Du Bois, The Souls of Black Folk (1903)</span></span></span>
-            — this constant awareness of measuring your own voice against how others will receive it. The AI becomes a kind of internal audience. You write, it rewrites, and gradually you start writing for the rewrite.
-            <div class="q-tags-row">
-              <span class="q-tag">double consciousness</span><span class="q-tag">identity</span><span class="q-tag">voice</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="q-item" onclick="toggle(this)">
-        <div class="q-header-row">
-          <span class="q-num">Q2</span>
-          <span class="q-question">Do you feel pressured to use AI in your academic writing?</span>
-          <span class="q-toggle-icon">+</span>
-        </div>
-        <div class="q-body">
-          <div class="q-answer-text">
-            It's not like anyone forces you. But there's an invisible expectation — especially in academic settings. If everyone around you is producing polished, AI-assisted work, and yours looks 'raw' or uneven, it stands out in a bad way. You conform without being told to. Mill would call this
-            <span class="tt blue">social tyranny<span class="tt-bubble"><span class="tt-bubble-term">Social Tyranny</span><span class="tt-bubble-def">Society exercises a tyranny "more formidable than many kinds of political oppression" through collective opinion — because it leaves fewer escape routes than law.</span><span class="tt-bubble-src">— John Stuart Mill, On Liberty (1859)</span></span></span>
-            — pressure that operates not through law or explicit rules, but through collective opinion and silent judgment. The scary part is how natural it feels. You don't experience it as pressure. You experience it as just... trying to do well.
-            <div class="q-tags-row">
-              <span class="q-tag">social tyranny</span><span class="q-tag">conformity</span><span class="q-tag">Mill</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="q-item" onclick="toggle(this)">
-        <div class="q-header-row">
-          <span class="q-num">Q3</span>
-          <span class="q-question">How does your experience as a non-native speaker shape this?</span>
-          <span class="q-toggle-icon">+</span>
-        </div>
-        <div class="q-body">
-          <div class="q-answer-text">
-            It amplifies everything. As a non-native speaker, I'm already hyper-aware of how my English sounds. There's always this
-            <span class="tt gold">two-ness<span class="tt-bubble"><span class="tt-bubble-term">Two-ness</span><span class="tt-bubble-def">"Two souls, two thoughts, two unreconciled strivings" — inhabiting two selves simultaneously. Not weakness, but the product of navigating a world that demands legibility before authenticity.</span><span class="tt-bubble-src">— W.E.B. Du Bois, The Souls of Black Folk (1903)</span></span></span>
-            — the voice inside my head, which thinks in Mandarin and structures ideas in a certain rhythm, and the voice I produce in English, which I'm constantly monitoring and adjusting. AI gives me a tool to close that gap. But it also makes the gap feel more real, more necessary to close. Before AI, I could tell myself: this is just how I write. Now there's always a 'better version' available.
-            <div class="q-tags-row">
-              <span class="q-tag">two-ness</span><span class="q-tag">language</span><span class="q-tag">identity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="q-item" onclick="toggle(this)">
-        <div class="q-header-row">
-          <span class="q-num">Q4</span>
-          <span class="q-question">What do you actually lose when AI 'improves' your writing?</span>
-          <span class="q-toggle-icon">+</span>
-        </div>
-        <div class="q-body">
-          <div class="q-answer-text">
-            The accent. Not literally — but the rhythm of how I think. The way I structure ideas is shaped by my first language, by my culture, by the specific path my mind has traveled. When AI smooths that out, it's more efficient, more readable. But something authentic disappears. It's like wearing a mask that makes people trust you more — and after a while, you start to forget what your own face looks like. The polish is real. But so is the loss.
-            <div class="q-tags-row">
-              <span class="q-tag">identity</span><span class="q-tag">authenticity</span><span class="q-tag">language</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="q-item" onclick="toggle(this)">
-        <div class="q-header-row">
-          <span class="q-num">Q5</span>
-          <span class="q-question">Is this conformity harmful, or is it just smart adaptation?</span>
-          <span class="q-toggle-icon">+</span>
-        </div>
-        <div class="q-body">
-          <div class="q-answer-text">
-            That's the hard question. I don't think adaptation is inherently bad. But Mill makes a distinction I keep coming back to: between growing through genuine engagement with the world, and being shaped by external pressure without awareness. The danger isn't using AI. The danger is using AI without realizing it's changing you. When that awareness disappears, so does your ability to push back. You lose
-            <span class="tt blue">individuality<span class="tt-bubble"><span class="tt-bubble-term">Individuality</span><span class="tt-bubble-def">The development of one's own faculties through genuine engagement — not mere eccentricity. A person who lets the world choose their plan of life "has no need of any other faculty than the ape-like one of imitation."</span><span class="tt-bubble-src">— John Stuart Mill, On Liberty (1859)</span></span></span>
-            — not because anyone took it, but because you handed it over one edit at a time.
-            <div class="q-tags-row">
-              <span class="q-tag">individuality</span><span class="q-tag">Mill</span><span class="q-tag">conformity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="q-item" onclick="toggle(this)">
-        <div class="q-header-row">
-          <span class="q-num">Q6</span>
-          <span class="q-question">What would you want AI tools to do differently?</span>
-          <span class="q-toggle-icon">+</span>
-        </div>
-        <div class="q-body">
-          <div class="q-answer-text">
-            Ask what I actually meant. Right now, most AI tools work by replacing — they take your words and offer a cleaner version. What if instead they asked: "what were you trying to say here?" That would be a tool that expands you rather than replaces you. Du Bois talked about seeing through
-            <span class="tt gold">the veil<span class="tt-bubble"><span class="tt-bubble-term">The Veil</span><span class="tt-bubble-def">The invisible barrier that distorts how marginalized people see themselves — always filtered first through the distorting lens of dominant society. Recognizing the veil is the first step to choosing what to do about it.</span><span class="tt-bubble-src">— W.E.B. Du Bois, The Souls of Black Folk (1903)</span></span></span>
-            — recognizing the distortion that society imposes on your self-perception. You have to see the veil before you can decide what to do about it. Most people never get there. They just accept the rewrite.
-            <div class="q-tags-row">
-              <span class="q-tag">the veil</span><span class="q-tag">Du Bois</span><span class="q-tag">awareness</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /q-list -->
-  </div><!-- /interview-wrap -->
-
-  <!-- ── THEORY ── -->
+  <!-- THEORY -->
   <div class="section-header" id="theory">
-    <h2>Theoretical Framework</h2>
-    <span class="sub">Two bodies of thought that explain one contemporary phenomenon</span>
+    <h2 data-i18n="theory_header">Theoretical Framework</h2>
+    <span class="sub" data-i18n="theory_sub">Two bodies of thought that explain one contemporary phenomenon</span>
   </div>
 
   <div class="theory-cols reveal">
-    <!-- Du Bois -->
     <div class="theory-col gold-col">
-      <div class="section-tag gold" style="margin-bottom:12px;">Sociology</div>
+      <div class="section-tag gold" style="margin-bottom:12px;" data-i18n="tag_sociology">Sociology</div>
       <div class="theory-author">W.E.B. Du Bois</div>
-      <div class="theory-subtitle">The Souls of Black Folk, 1903</div>
-
-      <div class="concept-entry">
-        <div class="concept-term">Double Consciousness</div>
-        <p class="concept-def">The sense of always looking at oneself through the eyes of others — a psychological tension between one's own identity and the identity imposed by society. Du Bois described it as "measuring one's soul by the tape of a world that looks on in amused contempt and pity."</p>
-        <div class="concept-src">The Souls of Black Folk (1903)</div>
-      </div>
-      <div class="concept-entry">
-        <div class="concept-term">Two-ness</div>
-        <p class="concept-def">"Two souls, two thoughts, two unreconciled strivings." Inhabiting two selves simultaneously — not as weakness, but as the product of navigating a world that demands legibility before it grants belonging.</p>
-        <div class="concept-src">The Souls of Black Folk (1903)</div>
-      </div>
-      <div class="concept-entry">
-        <div class="concept-term">The Veil</div>
-        <p class="concept-def">The invisible barrier that distorts how marginalized people see themselves — always filtered through the distorting lens of dominant society first. Seeing through the veil means recognizing that distortion, not eliminating it.</p>
-        <div class="concept-src">The Souls of Black Folk (1903)</div>
-      </div>
-
+      <div class="theory-subtitle" data-i18n="dubois_subtitle">The Souls of Black Folk, 1903</div>
+      <div id="dubois-concepts"><!-- filled by JS --></div>
       <div class="bq-pull">
-        <p>"It is a peculiar sensation, this double-consciousness, this sense of always looking at one's self through the eyes of others."</p>
+        <p data-i18n="dubois_quote">"It is a peculiar sensation, this double-consciousness, this sense of always looking at one's self through the eyes of others."</p>
         <cite>W.E.B. Du Bois, 1903</cite>
       </div>
     </div>
-
-    <!-- Mill -->
-    <div class="theory-col blue-col">
-      <div class="section-tag blue" style="margin-bottom:12px;">Philosophy</div>
+    <div class="theory-col blue-col" id="philosophy">
+      <div class="section-tag blue" style="margin-bottom:12px;" data-i18n="tag_philosophy">Philosophy</div>
       <div class="theory-author">John Stuart Mill</div>
-      <div class="theory-subtitle">On Liberty, 1859</div>
-
-      <div class="concept-entry">
-        <div class="concept-term">Social Tyranny</div>
-        <p class="concept-def">Society exercises a tyranny "more formidable than many kinds of political oppression" through collective opinion and social pressure. Unlike law, it leaves fewer escape routes — it penetrates daily life and shapes the soul itself, without a visible enforcer.</p>
-        <div class="concept-src">On Liberty (1859)</div>
-      </div>
-      <div class="concept-entry">
-        <div class="concept-term">Individuality</div>
-        <p class="concept-def">Not mere eccentricity, but the development of one's own faculties through genuine engagement with the world. "A person who lets the world choose his plan of life for him has no need of any other faculty than the ape-like one of imitation."</p>
-        <div class="concept-src">On Liberty (1859)</div>
-      </div>
-      <div class="concept-entry">
-        <div class="concept-term">The Connection</div>
-        <p class="concept-def">AI does not force anyone to write differently. It simply offers a better version — constantly, frictionlessly. That is exactly the mechanism Mill feared: not the threat of punishment, but the seamless availability of the approved form.</p>
-        <div class="concept-src">Analysis based on On Liberty</div>
-      </div>
-
+      <div class="theory-subtitle" data-i18n="mill_subtitle">On Liberty, 1859</div>
+      <div id="mill-concepts"><!-- filled by JS --></div>
       <div class="bq-pull">
-        <p>"Society practises a social tyranny more formidable than many kinds of political oppression, since it leaves fewer means of escape."</p>
+        <p data-i18n="mill_quote">"Society practises a social tyranny more formidable than many kinds of political oppression, since it leaves fewer means of escape."</p>
         <cite>John Stuart Mill, 1859</cite>
       </div>
     </div>
   </div>
 
-  <!-- ── INSIGHTS ── -->
+  <!-- INSIGHTS -->
   <div class="section-header" id="insights">
-    <h2>Key Quotations</h2>
-    <span class="sub">From the interview</span>
+    <h2 data-i18n="insights_header">Key Quotations</h2>
+    <span class="sub" data-i18n="insights_sub">From the interview</span>
   </div>
-
   <div class="reveal">
-    <div class="insight-masthead">Voices from the Interview</div>
-    <div class="insight-grid">
-      <div class="i-card">
-        <p class="i-quote">It sounds better, but not like me.</p>
-        <div class="i-ctx">On AI-polished writing</div>
-      </div>
-      <div class="i-card">
-        <p class="i-quote">You're not forced, but you still change.</p>
-        <div class="i-ctx">On invisible social pressure</div>
-      </div>
-      <div class="i-card">
-        <p class="i-quote">There's an invisible expectation.</p>
-        <div class="i-ctx">On conformity in academic writing</div>
-      </div>
-      <div class="i-card">
-        <p class="i-quote">You start to forget what your own face looks like.</p>
-        <div class="i-ctx">On losing authentic voice</div>
-      </div>
-    </div>
+    <div class="insight-masthead" data-i18n="insight_masthead">Voices from the Interview</div>
+    <div class="insight-grid" id="insight-grid"><!-- filled by JS --></div>
   </div>
 
-  <!-- ── CONCLUSION ── -->
+  <!-- CONCLUSION -->
   <div class="section-header">
-    <h2>Analysis</h2>
-    <span class="sub">What the interview reveals</span>
+    <h2 data-i18n="analysis_header">Analysis</h2>
+    <span class="sub" data-i18n="analysis_sub">What the interview reveals</span>
   </div>
-
   <div class="conclusion-grid reveal">
     <div>
-      <p class="conclusion-lead">Tom Liu is not opposed to AI. He is opposed to using it without awareness.</p>
-      <p class="conclusion-body">What Du Bois called the veil — the distorting lens through which marginalized people are forced to see themselves — has a contemporary counterpart. For non-native speakers navigating English-language institutions in the age of AI, that lens is the algorithm that always knows how to say it better.</p>
-      <p class="conclusion-body">What Mill called social tyranny has found a new delivery mechanism. AI does not demand conformity. It merely makes conformity seamless. One edit at a time. One rewrite at a time.</p>
+      <p class="conclusion-lead" data-i18n="conclusion_lead">Tom Liu is not opposed to AI. He is opposed to using it without awareness.</p>
+      <p class="conclusion-body" data-i18n="conclusion_p1">What Du Bois called the veil — the distorting lens through which marginalized people are forced to see themselves — has a contemporary counterpart. For non-native speakers navigating English-language institutions in the age of AI, that lens is the algorithm that always knows how to say it better.</p>
+      <p class="conclusion-body" data-i18n="conclusion_p2">What Mill called social tyranny has found a new delivery mechanism. AI does not demand conformity. It merely makes conformity seamless. One edit at a time. One rewrite at a time.</p>
     </div>
     <div>
-      <p class="conclusion-body" style="margin-top:54px;">The question is not whether to use these tools. The question is whether you can see the veil they create — and choose, with full awareness, what to do about it.</p>
-      <p class="conclusion-body">Most people never reach that question. The rewrite is offered. It is accepted. The voice shifts. Gradually, without announcement, a different person speaks.</p>
-      <div class="conclusion-kicker">
-        This project does not just analyze AI — it demonstrates how theory lives inside real experience.
-      </div>
+      <p class="conclusion-body" style="margin-top:54px;" data-i18n="conclusion_p3">The question is not whether to use these tools. The question is whether you can see the veil they create — and choose, with full awareness, what to do about it.</p>
+      <p class="conclusion-body" data-i18n="conclusion_p4">Most people never reach that question. The rewrite is offered. It is accepted. The voice shifts. Gradually, without announcement, a different person speaks.</p>
+      <div class="conclusion-kicker" data-i18n="conclusion_kicker">This project does not just analyze AI — it demonstrates how theory lives inside real experience.</div>
     </div>
   </div>
+</div>
 
-</div><!-- /content-wrap -->
-
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand">The Sociology Review</div>
-    <div class="footer-meta">UCLA Department of Sociology · AI, Language &amp; Identity · 2025</div>
+    <div class="footer-brand" data-i18n="masthead_title">The Sociology Review</div>
+    <div class="footer-meta" data-i18n="footer_meta">UCLA Department of Sociology · AI, Language &amp; Identity · 2025</div>
   </div>
 </footer>
 
 <script>
-  function toggle(el) { el.classList.toggle('open'); }
+// ── TRANSLATIONS ────────────────────────────────────────────────────────────
+const T = {
+  en: {
+    masthead_title: 'The Sociology Review',
+    nav_interview: 'Interview', nav_theory: 'Theory', nav_philosophy: 'Philosophy', nav_insights: 'Insights',
+    lang_label: 'Language',
+    datebar_section: 'Technology &amp; Identity · Special Report',
+    datebar_dept: 'UCLA Department of Sociology · 2025',
+    tag_special: 'Special Report',
+    main_headline: 'AI, Language &amp; Identity:<br>Who Are We Becoming?',
+    main_deck: "A UCLA sociology student argues that AI writing tools don't just help non-native speakers communicate — they quietly reshape the voice behind the words, pushing users toward an invisible standard nobody chose.",
+    byline_interview: 'Interview with <span class="byline-name">Tom Liu</span>, Undergraduate, Sociology, UCLA',
+    byline_theory: 'Theory: W.E.B. Du Bois &amp; John Stuart Mill',
+    byline_time: 'Reading time: 8 min',
+    front_p1: '<strong style="color:var(--black);">WHEN TOM LIU</strong> runs his academic essays through an AI writing tool, something happens that he can\'t quite name. The sentences get cleaner. The argument lands more sharply. But reading it back, he wonders: is this still mine?',
+    front_p2: 'Liu, a sociology student at UCLA born in Chengdu, China, has spent the past year thinking carefully about what AI does to language — not just to grammar and clarity, but to identity. His answer draws on W.E.B. Du Bois and John Stuart Mill to make a case that is as much philosophical as personal.',
+    front_p3: '"It sounds better," he says. "But it doesn\'t sound like me." The interview below explores what that gap means — and why it might matter more than any of us realize.',
+    pull_quote_front: 'It sounds better, but not like me.',
+    sidebar1_h: 'The full interview: six questions on AI, voice, and conformity',
+    sidebar1_p: 'Tom Liu speaks in depth about pressure, authenticity, and what gets lost in the rewrite.',
+    sidebar2_h: 'Du Bois in the digital age: double consciousness and AI',
+    sidebar2_p: 'How a 1903 concept maps onto the experience of non-native speakers using AI tools today.',
+    sidebar3_h: "Mill's warning: social tyranny has a new interface",
+    sidebar3_p: 'The philosopher who feared conformity more than law could not have imagined the algorithm.',
+    interview_hint: 'Click to expand · Hover <span style="color:var(--gold);border-bottom:1px solid rgba(139,105,20,.4)">gold</span> / <span style="color:var(--blue-ink);border-bottom:1px solid rgba(26,58,107,.4)">blue</span> terms for definitions',
+    label_subject: 'Subject',
+    profile_role: 'Undergraduate, Sociology<br>University of California, Los Angeles',
+    profile_born: 'Born: Chengdu, China',
+    profile_research: 'Research: media, technology, identity formation, language and power.',
+    profile_theory_note: 'Theory: W.E.B. Du Bois (The Souls of Black Folk, 1903) and John Stuart Mill (On Liberty, 1859).',
+    theory_header: 'Theoretical Framework', theory_sub: 'Two bodies of thought that explain one contemporary phenomenon',
+    tag_sociology: 'Sociology', tag_philosophy: 'Philosophy',
+    dubois_subtitle: 'The Souls of Black Folk, 1903',
+    mill_subtitle: 'On Liberty, 1859',
+    dubois_quote: '"It is a peculiar sensation, this double-consciousness, this sense of always looking at one\'s self through the eyes of others."',
+    mill_quote: '"Society practises a social tyranny more formidable than many kinds of political oppression, since it leaves fewer means of escape."',
+    insights_header: 'Key Quotations', insights_sub: 'From the interview',
+    insight_masthead: 'Voices from the Interview',
+    analysis_header: 'Analysis', analysis_sub: 'What the interview reveals',
+    conclusion_lead: 'Tom Liu is not opposed to AI. He is opposed to using it without awareness.',
+    conclusion_p1: "What Du Bois called the veil — the distorting lens through which marginalized people are forced to see themselves — has a contemporary counterpart. For non-native speakers navigating English-language institutions in the age of AI, that lens is the algorithm that always knows how to say it better.",
+    conclusion_p2: "What Mill called social tyranny has found a new delivery mechanism. AI does not demand conformity. It merely makes conformity seamless. One edit at a time. One rewrite at a time.",
+    conclusion_p3: "The question is not whether to use these tools. The question is whether you can see the veil they create — and choose, with full awareness, what to do about it.",
+    conclusion_p4: "Most people never reach that question. The rewrite is offered. It is accepted. The voice shifts. Gradually, without announcement, a different person speaks.",
+    conclusion_kicker: 'This project does not just analyze AI — it demonstrates how theory lives inside real experience.',
+    footer_meta: 'UCLA Department of Sociology · AI, Language &amp; Identity · 2025',
+  },
 
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
-  }, { threshold: 0.06 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  zh: {
+    masthead_title: '社会学评论',
+    nav_interview: '采访', nav_theory: '理论', nav_philosophy: '哲学', nav_insights: '洞察',
+    lang_label: '语言',
+    datebar_section: '技术与身份 · 特别报道',
+    datebar_dept: 'UCLA社会学系 · 2025',
+    tag_special: '特别报道',
+    main_headline: 'AI、语言与身份：<br>我们正在成为谁？',
+    main_deck: '一位UCLA社会学学生认为，AI写作工具不仅帮助非母语人士沟通——它们悄悄地重塑了文字背后的声音，将用户推向一个没有人选择的隐形标准。',
+    byline_interview: '采访对象：<span class="byline-name">Tom Liu</span>，UCLA社会学本科生',
+    byline_theory: '理论：W.E.B. 杜波依斯 &amp; 约翰·斯图尔特·密尔',
+    byline_time: '阅读时间：约8分钟',
+    front_p1: '<strong style="color:var(--black);">当TOM LIU</strong>将学术论文输入AI写作工具时，某种难以名状的事情发生了。句子变得更流畅，论点更清晰。但当他重新阅读时，他不禁疑惑：这还是我写的吗？',
+    front_p2: 'Liu是UCLA社会学系的学生，出生于中国成都。过去一年，他认真思考了AI对语言的影响——不仅是语法和清晰度，更是身份认同。他借助W.E.B.杜波依斯和约翰·斯图尔特·密尔的理论，提出了一个既具哲学深度又充满个人感悟的论断。',
+    front_p3: '"听起来更好，"他说，"但不像是我说的话。"以下采访探讨了这个差距意味着什么——以及它为何可能比我们任何人意识到的都更重要。',
+    pull_quote_front: '听起来更好，但不像我。',
+    sidebar1_h: '完整采访：关于AI、声音与顺从的六个问题',
+    sidebar1_p: 'Tom Liu深度探讨了压力、真实性，以及在改写中失去的东西。',
+    sidebar2_h: '数字时代的杜波依斯：双重意识与AI',
+    sidebar2_p: '一个1903年的概念，如何映射到今天使用AI工具的非母语人士的经历。',
+    sidebar3_h: '密尔的警告：社会暴政有了新的界面',
+    sidebar3_p: '这位比法律更惧怕顺从的哲学家，无法想象算法的出现。',
+    interview_hint: '点击展开 · 悬停 <span style="color:var(--gold);border-bottom:1px solid rgba(139,105,20,.4)">金色</span> / <span style="color:var(--blue-ink);border-bottom:1px solid rgba(26,58,107,.4)">蓝色</span> 词语查看理论定义',
+    label_subject: '受访者',
+    profile_role: '本科生，社会学系<br>加利福尼亚大学洛杉矶分校',
+    profile_born: '出生地：中国成都',
+    profile_research: '研究方向：媒体、技术、身份形成、语言与权力。',
+    profile_theory_note: '理论依据：W.E.B.杜波依斯（《黑人的灵魂》，1903年）和约翰·斯图尔特·密尔（《论自由》，1859年）。',
+    theory_header: '理论框架', theory_sub: '解释当代现象的两种思想体系',
+    tag_sociology: '社会学', tag_philosophy: '哲学',
+    dubois_subtitle: '《黑人的灵魂》，1903年',
+    mill_subtitle: '《论自由》，1859年',
+    dubois_quote: '"这是一种奇特的感觉——双重意识——总是通过他人的眼睛看待自己，用一个以轻蔑和怜悯审视你的世界的尺度来衡量自己的灵魂。"',
+    mill_quote: '"社会所实施的专制，比许多政治压迫更为可怕，因为它留下的逃脱手段更少。"',
+    insights_header: '关键语录', insights_sub: '摘自采访',
+    insight_masthead: '来自采访的声音',
+    analysis_header: '分析', analysis_sub: '采访揭示了什么',
+    conclusion_lead: 'Tom Liu并不反对AI。他反对的是在没有意识的情况下使用AI。',
+    conclusion_p1: '杜波依斯所说的"面纱"——迫使边缘化群体通过扭曲的镜头看待自己的屏障——在当代有了新的对应物。对于在AI时代身处英语学术环境中的非母语人士来说，那个镜头就是总知道如何说得更好的算法。',
+    conclusion_p2: '密尔所说的社会暴政找到了新的传递机制。AI不要求顺从，它只是让顺从变得天衣无缝。一次编辑，一次改写。',
+    conclusion_p3: '问题不在于是否使用这些工具，而在于你是否能看到它们创造的面纱——并以完全的自觉，选择如何应对。',
+    conclusion_p4: '大多数人从未抵达这个问题。改写被提供，被接受。声音悄悄转变。渐渐地，不声不响地，一个不同的人开口说话。',
+    conclusion_kicker: '这个项目不只是分析AI——它展示了理论如何在真实经历中活着。',
+    footer_meta: 'UCLA社会学系 · AI、语言与身份 · 2025',
+  },
+
+  es: {
+    masthead_title: 'La Revista de Sociología',
+    nav_interview: 'Entrevista', nav_theory: 'Teoría', nav_philosophy: 'Filosofía', nav_insights: 'Perspectivas',
+    lang_label: 'Idioma',
+    datebar_section: 'Tecnología e Identidad · Informe Especial',
+    datebar_dept: 'Departamento de Sociología de UCLA · 2025',
+    tag_special: 'Informe Especial',
+    main_headline: 'IA, Lenguaje e Identidad:<br>¿En Quiénes Nos Convertimos?',
+    main_deck: 'Un estudiante de sociología de UCLA argumenta que las herramientas de escritura con IA no solo ayudan a los hablantes no nativos a comunicarse — silenciosamente remodelan la voz detrás de las palabras, empujando a los usuarios hacia un estándar invisible que nadie eligió.',
+    byline_interview: 'Entrevista con <span class="byline-name">Tom Liu</span>, estudiante de Sociología, UCLA',
+    byline_theory: 'Teoría: W.E.B. Du Bois &amp; John Stuart Mill',
+    byline_time: 'Tiempo de lectura: 8 min',
+    front_p1: '<strong style="color:var(--black);">CUANDO TOM LIU</strong> pasa sus ensayos académicos por una herramienta de escritura con IA, algo ocurre que no puede nombrar con exactitud. Las oraciones quedan más claras. El argumento aterriza con más fuerza. Pero al releerlo, se pregunta: ¿sigue siendo mío?',
+    front_p2: 'Liu, estudiante de sociología en UCLA nacido en Chengdu, China, ha pasado el último año reflexionando sobre lo que la IA hace al lenguaje — no solo a la gramática y la claridad, sino a la identidad. Su respuesta se apoya en W.E.B. Du Bois y John Stuart Mill para construir un argumento tan filosófico como personal.',
+    front_p3: '"Suena mejor," dice. "Pero no suena como yo." La entrevista a continuación explora qué significa esa brecha — y por qué podría importar más de lo que cualquiera de nosotros cree.',
+    pull_quote_front: 'Suena mejor, pero no como yo.',
+    sidebar1_h: 'La entrevista completa: seis preguntas sobre IA, voz y conformismo',
+    sidebar1_p: 'Tom Liu habla en profundidad sobre la presión, la autenticidad y lo que se pierde en la reescritura.',
+    sidebar2_h: 'Du Bois en la era digital: doble conciencia e IA',
+    sidebar2_p: 'Cómo un concepto de 1903 se aplica a la experiencia de los hablantes no nativos que usan herramientas de IA hoy.',
+    sidebar3_h: 'La advertencia de Mill: la tiranía social tiene una nueva interfaz',
+    sidebar3_p: 'El filósofo que temía al conformismo más que a la ley no pudo haber imaginado el algoritmo.',
+    interview_hint: 'Clic para expandir · Pasa el cursor sobre términos <span style="color:var(--gold);border-bottom:1px solid rgba(139,105,20,.4)">dorados</span> / <span style="color:var(--blue-ink);border-bottom:1px solid rgba(26,58,107,.4)">azules</span> para ver definiciones',
+    label_subject: 'Entrevistado',
+    profile_role: 'Estudiante de Sociología<br>Universidad de California, Los Ángeles',
+    profile_born: 'Nacido en: Chengdu, China',
+    profile_research: 'Investigación: medios, tecnología, formación de identidad, lenguaje y poder.',
+    profile_theory_note: 'Teoría: W.E.B. Du Bois (Las almas del pueblo negro, 1903) y John Stuart Mill (Sobre la libertad, 1859).',
+    theory_header: 'Marco Teórico', theory_sub: 'Dos cuerpos de pensamiento que explican un fenómeno contemporáneo',
+    tag_sociology: 'Sociología', tag_philosophy: 'Filosofía',
+    dubois_subtitle: 'Las almas del pueblo negro, 1903',
+    mill_subtitle: 'Sobre la libertad, 1859',
+    dubois_quote: '"Es una sensación peculiar, esta doble conciencia, este sentido de siempre mirarse a uno mismo a través de los ojos de los demás."',
+    mill_quote: '"La sociedad practica una tiranía social más formidable que muchos tipos de opresión política, ya que deja menos medios de escape."',
+    insights_header: 'Citas Clave', insights_sub: 'De la entrevista',
+    insight_masthead: 'Voces de la Entrevista',
+    analysis_header: 'Análisis', analysis_sub: 'Lo que revela la entrevista',
+    conclusion_lead: 'Tom Liu no se opone a la IA. Se opone a usarla sin conciencia.',
+    conclusion_p1: 'Lo que Du Bois llamó el velo — la lente distorsionadora a través de la cual los grupos marginalizados son forzados a verse — tiene un correlato contemporáneo. Para los hablantes no nativos que navegan instituciones anglófonas en la era de la IA, esa lente es el algoritmo que siempre sabe cómo decirlo mejor.',
+    conclusion_p2: 'Lo que Mill llamó tiranía social ha encontrado un nuevo mecanismo de entrega. La IA no exige conformismo. Solo hace que el conformismo sea perfecto. Una edición a la vez. Una reescritura a la vez.',
+    conclusion_p3: 'La pregunta no es si usar estas herramientas. La pregunta es si puedes ver el velo que crean — y elegir, con plena conciencia, qué hacer al respecto.',
+    conclusion_p4: 'La mayoría de la gente nunca llega a esa pregunta. La reescritura se ofrece. Se acepta. La voz cambia. Gradualmente, sin anuncio, una persona diferente habla.',
+    conclusion_kicker: 'Este proyecto no solo analiza la IA — demuestra cómo la teoría vive dentro de la experiencia real.',
+    footer_meta: 'Departamento de Sociología de UCLA · IA, Lenguaje e Identidad · 2025',
+  }
+};
+
+// ── INTERVIEW DATA ──────────────────────────────────────────────────────────
+const QA = {
+  en: [
+    { q: 'Does AI change how you express yourself?',
+      a: `Yeah, honestly it does. When I write something and then run it through ChatGPT to 'clean it up,' it sounds more polished — but it doesn't quite sound like me anymore. There's this strange tension: I want to be understood clearly, but I also want people to know it's actually me speaking. It reminds me of Du Bois' <span class="tt gold">double consciousness<span class="tt-bubble"><b>Double Consciousness</b>The sense of always looking at oneself through the eyes of others — a tension between one's identity and the identity imposed by society.<em>— W.E.B. Du Bois, The Souls of Black Folk (1903)</em></span></span> — this constant awareness of measuring your own voice against how others will receive it. The AI becomes a kind of internal audience. You write, it rewrites, and gradually you start writing for the rewrite.`,
+      tags: ['double consciousness','identity','voice'] },
+    { q: 'Do you feel pressured to use AI in your academic writing?',
+      a: `It's not like anyone forces you. But there's an invisible expectation — especially in academic settings. If everyone around you is producing polished, AI-assisted work, and yours looks 'raw' or uneven, it stands out in a bad way. You conform without being told to. Mill would call this <span class="tt blue">social tyranny<span class="tt-bubble"><b>Social Tyranny</b>Society exercises a tyranny "more formidable than many kinds of political oppression" through collective opinion and social pressure. Unlike law, it leaves fewer escape routes.<em>— John Stuart Mill, On Liberty (1859)</em></span></span> — pressure that operates not through law or explicit rules, but through collective opinion and silent judgment. The scary part is how natural it feels. You don't experience it as pressure — you experience it as just trying to do well.`,
+      tags: ['social tyranny','conformity','Mill'] },
+    { q: 'How does your experience as a non-native speaker shape this?',
+      a: `It amplifies everything. As a non-native speaker, I'm already hyper-aware of how my English sounds. There's always this <span class="tt gold">two-ness<span class="tt-bubble"><b>Two-ness</b>"Two souls, two thoughts, two unreconciled strivings" — inhabiting two selves simultaneously. Not weakness, but the product of navigating a world that demands legibility before authenticity.<em>— W.E.B. Du Bois, The Souls of Black Folk (1903)</em></span></span> — the voice inside my head, which thinks in Mandarin and structures ideas in a certain rhythm, and the voice I produce in English, which I'm constantly monitoring and adjusting. AI gives me a tool to close that gap. But it also makes the gap feel more real, more necessary to close.`,
+      tags: ['two-ness','language','identity'] },
+    { q: "What do you actually lose when AI 'improves' your writing?",
+      a: `The accent. Not literally — but the rhythm of how I think. The way I structure ideas is shaped by my first language, by my culture, by the specific path my mind has traveled. When AI smooths that out, it's more efficient, more readable. But something authentic disappears. It's like wearing a mask that makes people trust you more — and after a while, you start to forget what your own face looks like. The polish is real. But so is the loss.`,
+      tags: ['identity','authenticity','language'] },
+    { q: 'Is this conformity harmful, or is it just smart adaptation?',
+      a: `That's the hard question. I don't think adaptation is inherently bad. But Mill makes a distinction I keep coming back to: between growing through genuine engagement with the world, and being shaped by external pressure without awareness. The danger isn't using AI. The danger is using AI without realizing it's changing you. When that awareness disappears, so does your ability to push back. You lose <span class="tt blue">individuality<span class="tt-bubble"><b>Individuality</b>The development of one's own faculties through genuine engagement — not mere eccentricity. "A person who lets the world choose his plan of life for him has no need of any other faculty than the ape-like one of imitation."<em>— John Stuart Mill, On Liberty (1859)</em></span></span> — not because anyone took it, but because you handed it over one edit at a time.`,
+      tags: ['individuality','Mill','conformity'] },
+    { q: 'What would you want AI tools to do differently?',
+      a: `Ask what I actually meant. Right now, most AI tools work by replacing — they take your words and offer a cleaner version. What if instead they asked: "what were you trying to say here?" That would be a tool that expands you rather than replaces you. Du Bois talked about seeing through <span class="tt gold">the veil<span class="tt-bubble"><b>The Veil</b>The invisible barrier that distorts how marginalized people see themselves — always filtered first through the lens of dominant society. Recognizing the veil is the first step to choosing what to do about it.<em>— W.E.B. Du Bois, The Souls of Black Folk (1903)</em></span></span> — recognizing the distortion that society imposes on your self-perception. You have to see the veil before you can decide what to do about it. Most people never get there. They just accept the rewrite.`,
+      tags: ['the veil','Du Bois','awareness'] },
+  ],
+  zh: [
+    { q: 'AI 改变了你的表达方式吗？',
+      a: `说实话，确实改变了。当我把写好的文章放进ChatGPT"润色"一下，读起来更流畅——但感觉不再是我的声音了。这里有一种奇怪的张力：我想要表达清晰，但我也想让人知道这是我在说话。这让我想起了杜波依斯的<span class="tt gold">双重意识<span class="tt-bubble"><b>双重意识</b>总是通过他人的眼睛看待自己的感觉——自身认同与社会强加认同之间的心理张力。<em>—— W.E.B.杜波依斯，《黑人的灵魂》（1903年）</em></span></span>——那种不断用他人的眼光衡量自己声音的感觉。AI变成了一种内在的观众。你写，它改写，渐渐地，你开始为那个改写版本而写作。`,
+      tags: ['双重意识','身份认同','声音'] },
+    { q: '你在学术写作中感到被迫使用AI吗？',
+      a: `不是说有人逼你。但有一种无形的期望——尤其是在学术环境中。如果你身边的人都在用AI打磨作品，而你的看起来"粗糙"或不平整，那就显眼了。你在没有被告知的情况下顺从了。密尔会称之为<span class="tt blue">社会暴政<span class="tt-bubble"><b>社会暴政</b>社会通过集体舆论施加"比许多政治压迫更可怕"的暴政。与法律不同，它留下更少的逃生出口。<em>—— 约翰·斯图尔特·密尔，《论自由》（1859年）</em></span></span>——不是通过法律或明确规则，而是通过集体舆论和沉默的评判来施加压力。可怕的是，这种压力感觉多么自然。你体验到的不是压力，而只是……想把事情做好。`,
+      tags: ['社会暴政','顺从','密尔'] },
+    { q: '作为非母语使用者，你的经历如何影响这一切？',
+      a: `它放大了一切。作为非母语使用者，我本来就对自己的英文听起来如何非常敏感。我总是有这种<span class="tt gold">双重性<span class="tt-bubble"><b>双重性</b>"两个灵魂，两种思想，两种难以调和的奋斗。"同时居住在两个自我中——不是软弱，而是在要求你在被接纳之前先被读懂的世界中行走的产物。<em>—— W.E.B.杜波依斯，《黑人的灵魂》（1903年）</em></span></span>——一个声音在我脑中，用普通话思考，以特定的节奏构建想法；另一个声音用英文说出来，而我一直在监视和调整。AI给了我一个工具来弥合这个差距。但它也让差距感觉更真实，更需要弥合。`,
+      tags: ['双重性','语言','身份认同'] },
+    { q: 'AI"改进"你的写作时，你实际上失去了什么？',
+      a: `口音。不是字面意义上的——而是我思维的节奏。我构建想法的方式受到我母语、我的文化、我心智走过的特定路径的影响。当AI将其抹平，它更高效、更易读。但一些真实的东西消失了。就像戴上一个让人更信任你的面具——过一段时间后，你开始忘记自己的脸长什么样。打磨是真实的。失去也是真实的。`,
+      tags: ['身份认同','真实性','语言'] },
+    { q: '这种顺从是有害的，还是只是聪明的适应？',
+      a: `这是个难回答的问题。我不认为适应本质上是不好的。但密尔有一个我一直回想的区分：通过与世界真实接触而成长，与在没有意识的情况下被外部压力塑造。危险不是使用AI。危险是在没有意识到AI正在改变你的情况下使用它。当那种意识消失，推回去的能力也随之消失。你失去了<span class="tt blue">个性<span class="tt-bubble"><b>个性</b>通过真正投入世界来发展自己的能力，而不是单纯的怪癖。"让世界为他选择人生计划的人，除了类人猿般的模仿能力外，不需要任何其他能力。"<em>—— 约翰·斯图尔特·密尔，《论自由》（1859年）</em></span></span>——不是因为有人夺走了，而是因为你一次一个修改地交出去。`,
+      tags: ['个性','密尔','顺从'] },
+    { q: '你希望AI工具有什么不同？',
+      a: `问我真正想说什么。目前，大多数AI工具的工作方式是替换——它们拿走你的文字，提供一个更干净的版本。如果它们改为问："你在这里想说什么？"那将是一个扩展你而不是替换你的工具。杜波依斯谈到看穿<span class="tt gold">面纱<span class="tt-bubble"><b>面纱</b>扭曲边缘化群体如何看待自己的无形屏障——总是先通过主流社会的扭曲镜头过滤。看穿面纱意味着认识到那种扭曲，而不是消除它。<em>—— W.E.B.杜波依斯，《黑人的灵魂》（1903年）</em></span></span>——认识到社会强加在你自我认知上的扭曲。你必须看到面纱，才能决定如何应对它。大多数人从未走到那一步。他们只是接受了改写。`,
+      tags: ['面纱','杜波依斯','意识'] },
+  ],
+  es: [
+    { q: '¿La IA cambia cómo te expresas?',
+      a: `Sí, honestamente lo hace. Cuando escribo algo y luego lo paso por ChatGPT para 'pulirlo', suena más cuidado — pero ya no suena como yo. Hay una tensión extraña: quiero que me entiendan con claridad, pero también quiero que la gente sepa que soy yo quien habla. Me recuerda a la <span class="tt gold">doble conciencia<span class="tt-bubble"><b>Doble Conciencia</b>El sentido de siempre mirarse a uno mismo a través de los ojos de los demás — una tensión psicológica entre la propia identidad y la impuesta por la sociedad.<em>— W.E.B. Du Bois, Las almas del pueblo negro (1903)</em></span></span> de Du Bois — esa conciencia constante de medir tu propia voz según cómo la van a recibir los demás. El IA se convierte en una especie de audiencia interna. Escribes, lo reescribe, y gradualmente empiezas a escribir para la reescritura.`,
+      tags: ['doble conciencia','identidad','voz'] },
+    { q: '¿Sientes presión para usar IA en tu escritura académica?',
+      a: `No es que alguien te obligue. Pero hay una expectativa invisible — especialmente en entornos académicos. Si todos a tu alrededor producen trabajo pulido con ayuda de IA, y el tuyo parece 'en bruto' o irregular, llama la atención de la manera equivocada. Te conformas sin que te lo digan. Mill llamaría a esto <span class="tt blue">tiranía social<span class="tt-bubble"><b>Tiranía Social</b>La sociedad ejerce una tiranía "más formidable que muchos tipos de opresión política" a través de la opinión colectiva. A diferencia de la ley, deja menos vías de escape.<em>— John Stuart Mill, Sobre la libertad (1859)</em></span></span> — presión que no opera a través de leyes o reglas explícitas, sino a través de la opinión colectiva y el juicio silencioso. Lo aterrador es lo natural que se siente. No lo experimentas como presión — lo experimentas como simplemente querer hacerlo bien.`,
+      tags: ['tiranía social','conformismo','Mill'] },
+    { q: '¿Cómo influye tu experiencia como hablante no nativo?',
+      a: `Lo amplifica todo. Como hablante no nativo, ya soy muy consciente de cómo suena mi inglés. Siempre hay esta <span class="tt gold">dualidad<span class="tt-bubble"><b>Dualidad (Two-ness)</b>"Dos almas, dos pensamientos, dos aspiraciones irreconciliables" — habitar dos yos simultáneamente. No es debilidad, sino el producto de navegar un mundo que exige legibilidad antes que autenticidad.<em>— W.E.B. Du Bois, Las almas del pueblo negro (1903)</em></span></span> — la voz dentro de mi cabeza, que piensa en mandarín y estructura ideas con un ritmo determinado, y la voz que produzco en inglés, que monitoreo y ajusto constantemente. El IA me da una herramienta para cerrar esa brecha. Pero también hace que la brecha parezca más real, más necesaria de cerrar.`,
+      tags: ['dualidad','lenguaje','identidad'] },
+    { q: "¿Qué pierdes realmente cuando el IA 'mejora' tu escritura?",
+      a: `El acento. No literalmente — sino el ritmo de cómo pienso. La manera en que estructuro las ideas está moldeada por mi primera lengua, mi cultura, el camino específico que ha recorrido mi mente. Cuando el IA lo suaviza, es más eficiente, más legible. Pero algo auténtico desaparece. Es como ponerse una máscara que hace que la gente confíe más en ti — y después de un tiempo, empiezas a olvidar cómo es tu propio rostro. El pulido es real. Pero la pérdida también.`,
+      tags: ['identidad','autenticidad','lenguaje'] },
+    { q: '¿Este conformismo es dañino o simplemente una adaptación inteligente?',
+      a: `Esa es la pregunta difícil. No creo que la adaptación sea inherentemente mala. Pero Mill hace una distinción a la que sigo volviendo: entre crecer a través del compromiso genuino con el mundo, y ser moldeado por presión externa sin conciencia de ello. El peligro no es usar IA. El peligro es usarla sin darse cuenta de que te está cambiando. Cuando esa conciencia desaparece, también desaparece la capacidad de resistir. Pierdes <span class="tt blue">individualidad<span class="tt-bubble"><b>Individualidad</b>El desarrollo de las propias facultades a través del compromiso genuino — no la mera excentricidad. "Una persona que deja que el mundo elija su plan de vida no necesita ninguna otra facultad que la imitación propia de los simios."<em>— John Stuart Mill, Sobre la libertad (1859)</em></span></span> — no porque alguien te la haya quitado, sino porque la fuiste entregando una edición a la vez.`,
+      tags: ['individualidad','Mill','conformismo'] },
+    { q: '¿Qué cambiarías en las herramientas de IA?',
+      a: `Que pregunten qué quise decir realmente. Ahora mismo, la mayoría trabajan reemplazando — toman tus palabras y ofrecen una versión más limpia. ¿Y si en cambio preguntaran: "¿qué querías decir aquí?" Eso sería una herramienta que te expande en lugar de reemplazarte. Du Bois habló de ver a través de <span class="tt gold">el velo<span class="tt-bubble"><b>El Velo</b>La barrera invisible que distorsiona cómo los grupos marginalizados se ven a sí mismos — siempre filtrada primero a través de la lente de la sociedad dominante. Reconocer el velo es el primer paso para elegir qué hacer al respecto.<em>— W.E.B. Du Bois, Las almas del pueblo negro (1903)</em></span></span> — reconocer la distorsión que la sociedad impone en tu autopercepción. Tienes que ver el velo antes de poder decidir qué hacer al respecto. La mayoría de la gente nunca llega ahí. Simplemente aceptan la reescritura.`,
+      tags: ['el velo','Du Bois','conciencia'] },
+  ],
+};
+
+const CONCEPTS = {
+  en: {
+    dubois: [
+      { term:'Double Consciousness', def:'The sense of always looking at oneself through the eyes of others — a psychological tension between one\'s own identity and the identity imposed by society. Du Bois described it as "measuring one\'s soul by the tape of a world that looks on in amused contempt and pity."', src:'The Souls of Black Folk (1903)' },
+      { term:'Two-ness', def:'"Two souls, two thoughts, two unreconciled strivings." Inhabiting two selves simultaneously — not as weakness, but as the product of navigating a world that demands legibility before it grants belonging.', src:'The Souls of Black Folk (1903)' },
+      { term:'The Veil', def:'The invisible barrier that distorts how marginalized people see themselves — always filtered through the distorting lens of dominant society first. Seeing through the veil means recognizing that distortion, not eliminating it.', src:'The Souls of Black Folk (1903)' },
+    ],
+    mill: [
+      { term:'Social Tyranny', def:'Society exercises a tyranny "more formidable than many kinds of political oppression" through collective opinion and social pressure. Unlike law, it leaves fewer escape routes — it penetrates daily life and shapes the soul itself.', src:'On Liberty (1859)' },
+      { term:'Individuality', def:'Not mere eccentricity, but the development of one\'s own faculties through genuine engagement with the world. "A person who lets the world choose his plan of life for him has no need of any other faculty than the ape-like one of imitation."', src:'On Liberty (1859)' },
+      { term:'The Connection', def:'AI does not force anyone to write differently. It simply offers a better version — constantly, frictionlessly. That is exactly the mechanism Mill feared: not the threat of punishment, but the seamless availability of the approved form.', src:'Analysis based on On Liberty' },
+    ],
+  },
+  zh: {
+    dubois: [
+      { term:'双重意识', def:'总是通过他人眼光看待自己的感觉——一种自身认同与社会强加认同之间的心理张力。杜波依斯将其描述为"用一个以轻蔑和怜悯审视你的世界的尺度来衡量自己的灵魂"。', src:'《黑人的灵魂》（1903年）' },
+      { term:'双重性', def:'"两个灵魂，两种思想，两种难以调和的奋斗。"同时居住在两个自我中——不是软弱，而是在要求你在被接纳之前先被读懂的世界中行走的产物。', src:'《黑人的灵魂》（1903年）' },
+      { term:'面纱', def:'扭曲边缘化群体如何看待自己的无形屏障——总是先通过主流社会的扭曲镜头过滤。看穿面纱意味着认识到那种扭曲，而不是消除它。', src:'《黑人的灵魂》（1903年）' },
+    ],
+    mill: [
+      { term:'社会暴政', def:'社会通过集体舆论施加"比许多政治压迫更可怕"的暴政。与法律不同，它留下更少的逃生出口——它渗透日常生活，塑造灵魂本身。', src:'《论自由》（1859年）' },
+      { term:'个性', def:'不是单纯的怪癖，而是通过真正投入世界来发展自己的能力。"让世界为他选择人生计划的人，除了类人猿般的模仿能力外，不需要任何其他能力。"', src:'《论自由》（1859年）' },
+      { term:'联系', def:'AI不会强迫任何人改变写作方式。它只是不断、无摩擦地提供一个更好的版本。这正是密尔所担忧的机制：不是惩罚的威胁，而是经过认可的形式的无缝可用性。', src:'基于《论自由》的分析' },
+    ],
+  },
+  es: {
+    dubois: [
+      { term:'Doble Conciencia', def:'El sentido de siempre mirarse a uno mismo a través de los ojos de los demás — una tensión psicológica entre la propia identidad y la identidad impuesta por la sociedad. Du Bois lo describió como "medir el alma de uno con la cinta de un mundo que mira con desprecio y lástima."', src:'Las almas del pueblo negro (1903)' },
+      { term:'Dualidad', def:'"Dos almas, dos pensamientos, dos aspiraciones irreconciliables." Habitar dos yos simultáneamente — no como debilidad, sino como el producto de navegar un mundo que exige legibilidad antes de conceder pertenencia.', src:'Las almas del pueblo negro (1903)' },
+      { term:'El Velo', def:'La barrera invisible que distorsiona cómo los grupos marginalizados se ven a sí mismos — siempre filtrada primero a través de la lente distorsionadora de la sociedad dominante. Ver a través del velo significa reconocer esa distorsión, no eliminarla.', src:'Las almas del pueblo negro (1903)' },
+    ],
+    mill: [
+      { term:'Tiranía Social', def:'La sociedad ejerce una tiranía "más formidable que muchos tipos de opresión política" a través de la opinión colectiva y la presión social. A diferencia de la ley, deja menos vías de escape — penetra en la vida cotidiana y moldea el alma misma.', src:'Sobre la libertad (1859)' },
+      { term:'Individualidad', def:'No la mera excentricidad, sino el desarrollo de las propias facultades a través del compromiso genuino con el mundo. "Una persona que deja que el mundo elija su plan de vida no necesita ninguna otra facultad que la imitación propia de los simios."', src:'Sobre la libertad (1859)' },
+      { term:'La Conexión', def:'La IA no obliga a nadie a escribir de manera diferente. Simplemente ofrece una versión mejor — constantemente, sin fricción. Ese es exactamente el mecanismo que Mill temía: no la amenaza del castigo, sino la disponibilidad perfecta de la forma aprobada.', src:'Análisis basado en Sobre la libertad' },
+    ],
+  },
+};
+
+const INSIGHTS = {
+  en: [
+    { q:'It sounds better, but not like me.', ctx:'On AI-polished writing' },
+    { q:"You're not forced, but you still change.", ctx:'On invisible social pressure' },
+    { q:"There's an invisible expectation.", ctx:'On conformity in academic writing' },
+    { q:'You start to forget what your own face looks like.', ctx:'On losing authentic voice' },
+  ],
+  zh: [
+    { q:'听起来更好，但不像我。', ctx:'关于AI润色的写作' },
+    { q:'你没有被强迫，但你还是改变了。', ctx:'关于无形的社会压力' },
+    { q:'有一种无形的期望。', ctx:'关于学术写作中的顺从' },
+    { q:'你开始忘记自己的脸长什么样。', ctx:'关于失去真实的声音' },
+  ],
+  es: [
+    { q:'Suena mejor, pero no como yo.', ctx:'Sobre la escritura pulida por IA' },
+    { q:'No te obligan, pero igual cambias.', ctx:'Sobre la presión social invisible' },
+    { q:'Hay una expectativa invisible.', ctx:'Sobre el conformismo en la escritura académica' },
+    { q:'Empiezas a olvidar cómo es tu propio rostro.', ctx:'Sobre perder la voz auténtica' },
+  ],
+};
+
+// ── RENDER ───────────────────────────────────────────────────────────────────
+let currentLang = 'en';
+
+function renderQA(lang) {
+  const list = document.getElementById('q-list');
+  list.innerHTML = QA[lang].map((item, i) => `
+    <div class="q-item" onclick="this.classList.toggle('open')">
+      <div class="q-header-row">
+        <span class="q-num">Q${i+1}</span>
+        <span class="q-question">${item.q}</span>
+        <span class="q-toggle-icon">+</span>
+      </div>
+      <div class="q-body">
+        <div class="q-answer-text">
+          ${item.a}
+          <div class="q-tags-row">${item.tags.map(t=>`<span class="q-tag">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function renderConcepts(lang) {
+  const renderSection = (id, items) => {
+    document.getElementById(id).innerHTML = items.map(c => `
+      <div class="concept-entry">
+        <div class="concept-term">${c.term}</div>
+        <p class="concept-def">${c.def}</p>
+        <div class="concept-src">${c.src}</div>
+      </div>`).join('');
+  };
+  renderSection('dubois-concepts', CONCEPTS[lang].dubois);
+  renderSection('mill-concepts', CONCEPTS[lang].mill);
+}
+
+function renderInsights(lang) {
+  document.getElementById('insight-grid').innerHTML = INSIGHTS[lang].map(i => `
+    <div class="i-card">
+      <p class="i-quote">${i.q}</p>
+      <div class="i-ctx">${i.ctx}</div>
+    </div>`).join('');
+}
+
+function applyStrings(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+  });
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hans' : lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    if ((lang === 'en' && b.textContent === 'EN') ||
+        (lang === 'zh' && b.textContent === '中文') ||
+        (lang === 'es' && b.textContent === 'ES')) b.classList.add('active');
+  });
+  applyStrings(lang);
+  renderQA(lang);
+  renderConcepts(lang);
+  renderInsights(lang);
+}
+
+// Init
+setLang('en');
+
+// Reveal animation
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
