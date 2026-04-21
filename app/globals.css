@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #080808;
+  --bg-card: #101010;
+  --bg-card-hover: #141414;
+  --border: #1e1e1e;
+  --border-light: #2a2a2a;
+  --text: #d8d8d8;
+  --text-muted: #666;
+  --text-dim: #999;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-bg: rgba(201, 168, 76, 0.08);
+  --blue: #4a90d9;
+  --blue-light: #7ab3e8;
+  --blue-bg: rgba(74, 144, 217, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Section divider ---------- */
+.section-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--border-light);
+  margin: 0 auto;
+}
+
+/* ---------- Reading column ---------- */
+.reading-col {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Interview card ---------- */
+.interview-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+.interview-card:hover {
+  border-color: var(--border-light);
+}
+
+/* ---------- Answer body ---------- */
+.answer-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease;
+  opacity: 0;
+}
+.answer-body.open {
+  max-height: 600px;
+  opacity: 1;
+}
+
+/* ---------- Theory tooltip ---------- */
+.theory-word {
+  cursor: pointer;
+  display: inline;
+  position: relative;
+}
+.theory-word.gold {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.5);
+}
+.theory-word.blue {
+  color: var(--blue);
+  border-bottom: 1px solid rgba(74, 144, 217, 0.5);
+}
+
+.theory-popup {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background: #111;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 14px 16px;
+  z-index: 200;
+  pointer-events: none;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  animation: tooltipIn 0.15s ease;
+}
+
+@keyframes tooltipIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Arrow on tooltip */
+.theory-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--border-light);
+}
+
+/* ---------- Insight cards ---------- */
+.insight-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px 24px;
+  transition: border-color 0.2s ease, transform 0.3s ease;
+}
+.insight-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+}
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #333; }
+
+/* ---------- Selection ---------- */
+::selection {
+  background: rgba(201, 168, 76, 0.2);
+  color: var(--gold-light);
+}
